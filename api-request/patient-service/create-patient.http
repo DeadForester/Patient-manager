@@ -1,0 +1,11 @@
+### POST request to create new patient
+POST http://localhost:8000/api/v1/patients
+Content-Type: application/json
+
+{
+  "name" : "John Watson",
+  "email" : "john.doe@example.com",
+  "address": "123 test test",
+  "dateOfBirth": "1990-02-23",
+  "registeredDate": "2025-10-16"
+}
