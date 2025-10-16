@@ -3,6 +3,7 @@ package com.pm.patientservice.service;
 import com.pm.patientservice.entity.Patient;
 import com.pm.patientservice.mapper.PatientMapper;
 import com.pm.patientservice.repository.PatientRepository;
+import com.pm.patientservice.web.dto.PatientRequestDTO;
 import com.pm.patientservice.web.dto.PatientResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,13 @@ public class PatientService {
         return patients.stream()
                 .map(PatientMapper::toDTO)
                 .toList();
+    }
+
+    public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        Patient newPatient = patientRepository.save(
+                PatientMapper.toEntity(patientRequestDTO)
+        );
+
+        return PatientMapper.toDTO(newPatient);
     }
 }
